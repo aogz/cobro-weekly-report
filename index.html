@@ -343,6 +343,77 @@
 
         .item-meta a:hover { color: var(--primary-hover); text-decoration: underline; }
 
+        .item-media {
+            margin-top: 0.75rem;
+            display: grid;
+            gap: 0.625rem;
+            grid-template-columns: 1fr;
+        }
+
+        .item-media.two-up {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .item-media figure {
+            margin: 0;
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: #0a0a0b;
+            transition: box-shadow 0.15s ease, transform 0.15s ease;
+            cursor: zoom-in;
+        }
+
+        .item-media figure:hover {
+            box-shadow: 0 6px 14px -4px #00000026;
+            transform: translateY(-1px);
+        }
+
+        .item-media img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 360px;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .item-media figcaption {
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+            padding: 0.375rem 0.625rem;
+            background: #fafafa;
+            border-top: 1px solid var(--card-border);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 11, 0.92);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 2rem;
+            cursor: zoom-out;
+            backdrop-filter: blur(4px);
+        }
+
+        .lightbox.open { display: flex; }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: var(--radius-md);
+            box-shadow: 0 20px 40px -10px #00000080;
+        }
+
+        @media (max-width: 640px) {
+            .item-media.two-up { grid-template-columns: 1fr; }
+        }
+
         .revert-note {
             display: inline-flex;
             align-items: center;
@@ -506,6 +577,12 @@
                     <div class="item-body">
                         <div class="item-head"><span class="tag added"><i class="fa-solid fa-plus"></i> added</span></div>
                         <div class="item-text">Resizable webfuse extension sidebar with persisted width, overlay/push layout toggle via new <code>side_panel.overlay</code> manifest field, and <code>setWidth</code> / <code>setOverlay</code> JS API methods.</div>
+                        <div class="item-media">
+                            <figure>
+                                <img src="images/sidebar-resize.gif" alt="Animated demo of the resizable extension sidebar in Studio" loading="lazy">
+                                <figcaption>Drag handle resizes the extension sidebar in real time — width persists per extension.</figcaption>
+                            </figure>
+                        </div>
                     </div>
                     <div class="item-meta">
                         <span class="author"><i class="fa-regular fa-user"></i> aogz</span>
@@ -542,6 +619,16 @@
                     <div class="item-body">
                         <div class="item-head"><span class="tag added"><i class="fa-solid fa-plus"></i> added</span></div>
                         <div class="item-text">New <code>automation_available_tools</code> space option lets admins restrict which MCP tools are exposed in sessions, with per-tool toggles in the automation app settings.</div>
+                        <div class="item-media two-up">
+                            <figure>
+                                <img src="images/tool-filtering-1.png" alt="Automation app settings showing '13 of 14 tools enabled'" loading="lazy">
+                                <figcaption>App settings — summary row shows how many tools are currently enabled for the space.</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="images/tool-filtering-2.png" alt="Per-tool checkbox picker with act.click, act.type, etc." loading="lazy">
+                                <figcaption>Per-tool picker — toggle individual MCP tools (act.*, see.*, navigate, wait, pageInfo).</figcaption>
+                            </figure>
+                        </div>
                     </div>
                     <div class="item-meta">
                         <span class="author"><i class="fa-regular fa-user"></i> aogz</span>
@@ -972,6 +1059,29 @@
             </p>
         </div>
     </footer>
+
+    <div class="lightbox" id="lightbox">
+        <img id="lightbox-img" alt="">
+    </div>
+
+    <script>
+        (() => {
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lightbox-img');
+            document.querySelectorAll('.item-media figure').forEach(fig => {
+                fig.addEventListener('click', () => {
+                    const img = fig.querySelector('img');
+                    lbImg.src = img.src;
+                    lbImg.alt = img.alt;
+                    lb.classList.add('open');
+                });
+            });
+            lb.addEventListener('click', () => lb.classList.remove('open'));
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') lb.classList.remove('open');
+            });
+        })();
+    </script>
 
 </body>
 </html>
