@@ -16,11 +16,9 @@
             --border: #e5e7eb;
             --primary: #3362d3;
             --primary-hover: #2952b8;
-            --primary-glow: #3362d34d;
             --card: #fff;
             --card-border: #e8e8e9;
 
-            --radius: 0.625rem;
             --radius-lg: 0.75rem;
             --radius-md: 0.5rem;
 
@@ -46,7 +44,7 @@
             font-family: "Manrope", system-ui, -apple-system, sans-serif;
             background: var(--background);
             color: var(--foreground);
-            line-height: 1.6;
+            line-height: 1.55;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -63,7 +61,7 @@
         .hero {
             background: linear-gradient(to bottom right, #eff6ff 0%, #ffffff 50%, #f5f3ff 100%);
             border-bottom: 1px solid var(--border);
-            padding: 4rem 1.5rem 3rem;
+            padding: 3.5rem 1.5rem 2.75rem;
             position: relative;
             overflow: hidden;
         }
@@ -79,13 +77,13 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1080px;
             margin: 0 auto;
             padding: 0 1.5rem;
             position: relative;
         }
 
-        .hero-container { max-width: 1100px; margin: 0 auto; position: relative; }
+        .hero-container { max-width: 1080px; margin: 0 auto; position: relative; }
 
         .eyebrow {
             display: inline-flex;
@@ -97,16 +95,15 @@
             border-radius: 9999px;
             font-size: 0.8125rem;
             font-weight: 600;
-            margin-bottom: 1.25rem;
-            letter-spacing: 0.01em;
+            margin-bottom: 1rem;
         }
 
         h1 {
-            font-size: clamp(2rem, 5vw, 3.25rem);
+            font-size: clamp(1.875rem, 4.5vw, 2.875rem);
             font-weight: 800;
             letter-spacing: -0.02em;
             line-height: 1.1;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             color: var(--foreground);
         }
 
@@ -118,16 +115,25 @@
         }
 
         .hero-sub {
-            font-size: 1.125rem;
+            font-size: 1.0625rem;
             color: var(--muted-foreground);
             max-width: 640px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .hero-sub code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.95em;
+            background: #fff;
+            padding: 0.125rem 0.4rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.875rem;
             max-width: 720px;
         }
 
@@ -135,7 +141,7 @@
             background: var(--card);
             border: 1px solid var(--card-border);
             border-radius: var(--radius-lg);
-            padding: 1.25rem;
+            padding: 1rem 1.125rem;
             transition: all 0.15s ease;
         }
 
@@ -145,18 +151,18 @@
         }
 
         .stat-icon {
-            width: 2.25rem;
-            height: 2.25rem;
+            width: 2rem;
+            height: 2rem;
             border-radius: var(--radius-md);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
-            margin-bottom: 0.625rem;
+            font-size: 0.9375rem;
+            margin-bottom: 0.5rem;
         }
 
         .stat-value {
-            font-size: 1.875rem;
+            font-size: 1.625rem;
             font-weight: 700;
             color: var(--foreground);
             line-height: 1;
@@ -170,85 +176,94 @@
             font-weight: 500;
         }
 
-        main { padding: 3.5rem 0 5rem; }
+        main { padding: 2.5rem 0 4rem; }
 
-        section { margin-bottom: 3.5rem; }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 0.875rem;
-            margin-bottom: 1.75rem;
-        }
-
-        .section-icon {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: var(--radius-md);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.125rem;
-        }
-
-        h2 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--foreground);
-        }
-
-        .section-count {
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-            font-weight: 500;
-            margin-left: auto;
-            background: #f5f5f5;
-            padding: 0.25rem 0.625rem;
-            border-radius: 9999px;
-        }
-
-        .cards {
-            display: grid;
-            gap: 0.875rem;
-        }
-
-        .card {
+        /* One card per section */
+        .section-card {
             background: var(--card);
             border: 1px solid var(--card-border);
             border-radius: var(--radius-lg);
-            padding: 1.25rem 1.375rem;
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            transition: all 0.15s ease;
-            position: relative;
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+            transition: box-shadow 0.15s ease;
         }
 
-        .card:hover {
-            border-color: #cad5e2;
+        .section-card:hover {
             box-shadow: 0 4px 6px -1px #0000000d, 0 2px 4px -2px #0000000d;
-            transform: translateY(-1px);
         }
 
-        .card-tag-icon {
-            flex-shrink: 0;
-            width: 2.25rem;
-            height: 2.25rem;
+        .section-head {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-icon {
+            width: 2.125rem;
+            height: 2.125rem;
             border-radius: var(--radius-md);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9375rem;
+            font-size: 1rem;
+            flex-shrink: 0;
         }
 
-        .card-body { flex: 1; min-width: 0; }
+        h2 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: var(--foreground);
+            margin: 0;
+        }
 
-        .card-tags {
+        .section-count {
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+            font-weight: 600;
+            margin-left: auto;
+            background: #f5f5f5;
+            padding: 0.1875rem 0.5rem;
+            border-radius: 9999px;
+        }
+
+        .items { display: flex; flex-direction: column; }
+
+        .item {
+            display: grid;
+            grid-template-columns: 1.75rem 1fr auto;
+            gap: 0.875rem;
+            align-items: start;
+            padding: 0.75rem 1.25rem;
+            border-bottom: 1px solid #f3f4f6;
+            transition: background-color 0.1s ease;
+        }
+
+        .item:last-child { border-bottom: none; }
+        .item:hover { background: #fafafa; }
+
+        .item-icon {
+            width: 1.75rem;
+            height: 1.75rem;
+            border-radius: 0.375rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8125rem;
+            flex-shrink: 0;
+            margin-top: 0.125rem;
+        }
+
+        .item-body { min-width: 0; }
+
+        .item-head {
             display: flex;
             flex-wrap: wrap;
+            align-items: center;
             gap: 0.375rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.1875rem;
         }
 
         .tag {
@@ -258,9 +273,10 @@
             font-size: 0.6875rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.04em;
-            padding: 0.1875rem 0.5rem;
+            letter-spacing: 0.03em;
+            padding: 0.125rem 0.4375rem;
             border-radius: 9999px;
+            line-height: 1.3;
         }
 
         .tag.added       { color: var(--color-added);       background: var(--color-added-bg); }
@@ -271,36 +287,45 @@
         .tag.deprecated  { color: var(--color-removed);     background: var(--color-removed-bg); }
         .tag.security    { color: var(--color-security);    background: var(--color-security-bg); }
         .tag.internal    { color: var(--color-internal);    background: var(--color-internal-bg); }
-        .tag.client      { color: #c47b00;                  background: #f3bf5933; }
+        .tag.client      { color: #8b6508;                  background: #f3bf5933; }
         .tag.revert      { color: var(--color-removed);     background: var(--color-removed-bg); }
 
-        .card-text {
+        .item-text {
             font-size: 0.9375rem;
             color: var(--foreground);
-            line-height: 1.55;
-            margin-bottom: 0.625rem;
+            line-height: 1.5;
         }
 
-        .card-text code {
+        .item-text code {
             background: #f5f5f5;
-            padding: 0.0625rem 0.35rem;
-            border-radius: 4px;
+            padding: 0.0625rem 0.3125rem;
+            border-radius: 3px;
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
             font-size: 0.8125rem;
             color: #1c1c1d;
             border: 1px solid #e8e8e9;
+            white-space: nowrap;
         }
 
-        .card-meta {
+        .item-meta {
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
-            gap: 0.875rem;
+            gap: 0.75rem;
             font-size: 0.8125rem;
             color: var(--muted-foreground);
+            flex-shrink: 0;
+            white-space: nowrap;
         }
 
-        .card-meta a {
+        .item-meta .author {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3125rem;
+        }
+
+        .item-meta .author i { color: #9ca3af; font-size: 0.75rem; }
+
+        .item-meta a {
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
@@ -310,27 +335,25 @@
             transition: color 0.15s ease;
         }
 
-        .card-meta a:hover { color: var(--primary-hover); text-decoration: underline; }
+        .item-meta a:hover { color: var(--primary-hover); text-decoration: underline; }
 
-        .card-meta .author {
+        .revert-note {
             display: inline-flex;
             align-items: center;
             gap: 0.375rem;
+            margin-top: 0.3125rem;
+            padding: 0.25rem 0.5rem;
+            background: #fb2c361a;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: #991b1b;
+            font-weight: 500;
         }
 
-        .card-meta .author i { color: #9ca3af; font-size: 0.75rem; }
-
-        .revert-note {
-            margin-top: 0.625rem;
-            padding: 0.5rem 0.75rem;
-            background: #fb2c361a;
-            border-left: 3px solid var(--color-removed);
-            border-radius: 4px;
-            font-size: 0.8125rem;
-            color: #991b1b;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .revert-note a {
+            color: inherit;
+            text-decoration: underline;
+            font-weight: 700;
         }
 
         /* Section accent colors on icons */
@@ -340,25 +363,26 @@
         .sec-breaking  .section-icon { background: var(--color-removed-bg);     color: var(--color-removed); }
         .sec-internal  .section-icon { background: var(--color-internal-bg);    color: var(--color-internal); }
 
-        /* Card tag icon backgrounds per primary tag */
-        .card[data-type="added"]       .card-tag-icon { background: var(--color-added-bg);       color: var(--color-added); }
-        .card[data-type="fixed"]       .card-tag-icon { background: var(--color-fixed-bg);       color: var(--color-fixed); }
-        .card[data-type="changed"]     .card-tag-icon { background: var(--color-changed-bg);     color: var(--color-changed); }
-        .card[data-type="performance"] .card-tag-icon { background: var(--color-performance-bg); color: var(--color-performance); }
-        .card[data-type="removed"]     .card-tag-icon { background: var(--color-removed-bg);     color: var(--color-removed); }
-        .card[data-type="deprecated"]  .card-tag-icon { background: var(--color-removed-bg);     color: var(--color-removed); }
-        .card[data-type="security"]    .card-tag-icon { background: var(--color-security-bg);    color: var(--color-security); }
-        .card[data-type="internal"]    .card-tag-icon { background: var(--color-internal-bg);    color: var(--color-internal); }
-        .card[data-type="revert"]      .card-tag-icon { background: var(--color-removed-bg);     color: var(--color-removed); }
+        /* Item icon backgrounds by type */
+        .item[data-type="added"]       .item-icon { background: var(--color-added-bg);       color: var(--color-added); }
+        .item[data-type="fixed"]       .item-icon { background: var(--color-fixed-bg);       color: var(--color-fixed); }
+        .item[data-type="changed"]     .item-icon { background: var(--color-changed-bg);     color: var(--color-changed); }
+        .item[data-type="performance"] .item-icon { background: var(--color-performance-bg); color: var(--color-performance); }
+        .item[data-type="removed"]     .item-icon { background: var(--color-removed-bg);     color: var(--color-removed); }
+        .item[data-type="security"]    .item-icon { background: var(--color-security-bg);    color: var(--color-security); }
+        .item[data-type="internal"]    .item-icon { background: var(--color-internal-bg);    color: var(--color-internal); }
+        .item[data-type="revert"]      .item-icon { background: var(--color-removed-bg);     color: var(--color-removed); }
 
         footer {
             border-top: 1px solid var(--border);
             padding: 2rem 1.5rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
             text-align: center;
             color: var(--muted-foreground);
             font-size: 0.875rem;
         }
+
+        footer strong { color: var(--foreground); }
 
         footer a {
             color: var(--primary);
@@ -397,12 +421,19 @@
 
         .contributor-chip i { color: #9ca3af; }
 
-        @media (max-width: 640px) {
-            .hero { padding: 3rem 1.25rem 2.5rem; }
-            h1 { font-size: 2rem; }
-            .card { flex-direction: column; gap: 0.75rem; padding: 1.125rem; }
-            .card-tag-icon { width: 2rem; height: 2rem; }
-            .section-count { margin-left: 0; }
+        @media (max-width: 720px) {
+            .hero { padding: 2.75rem 1.25rem 2rem; }
+            h1 { font-size: 1.875rem; }
+            .item {
+                grid-template-columns: 1.5rem 1fr;
+                padding: 0.75rem 1rem;
+            }
+            .item-meta {
+                grid-column: 2;
+                margin-top: 0.25rem;
+                white-space: normal;
+            }
+            .section-head { padding: 0.875rem 1rem; }
         }
     </style>
 </head>
@@ -417,8 +448,7 @@
             </div>
             <h1>What shipped <span class="accent">this week</span></h1>
             <p class="hero-sub">
-                A roundup of everything that landed in <code style="font-family:ui-monospace,monospace;font-size:0.95em;background:#f5f5f5;padding:0.125rem 0.4rem;border-radius:4px;">surfly/cobro</code>
-                between April 20 and 26 — new capabilities, fixes, and tooling changes across the platform.
+                A roundup of everything that landed in <code>surfly/cobro</code> between April 20 and 26 — new capabilities, fixes, and tooling changes across the platform.
             </p>
 
             <div class="stats-grid">
@@ -426,7 +456,7 @@
                     <div class="stat-icon" style="background:var(--color-fixed-bg);color:var(--color-fixed);">
                         <i class="fa-solid fa-code-pull-request"></i>
                     </div>
-                    <div class="stat-value">26</div>
+                    <div class="stat-value">29</div>
                     <div class="stat-label">Pull requests merged</div>
                 </div>
                 <div class="stat-card">
@@ -457,425 +487,461 @@
     <main class="container">
 
         <!-- NEW FEATURES -->
-        <section class="sec-features">
-            <div class="section-header">
+        <section class="section-card sec-features">
+            <div class="section-head">
                 <div class="section-icon"><i class="fa-solid fa-rocket"></i></div>
                 <h2>New Features</h2>
                 <span class="section-count">6</span>
             </div>
-            <div class="cards">
+            <div class="items">
 
-                <article class="card" data-type="added">
-                    <div class="card-tag-icon"><i class="fa-solid fa-window-restore"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag added"><i class="fa-solid fa-plus"></i> added</span></div>
-                        <p class="card-text">Resizable webfuse extension sidebar with persisted width, overlay/push layout toggle via new <code>side_panel.overlay</code> manifest field, and <code>setWidth</code> / <code>setOverlay</code> JS API methods.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> aogz</span>
-                            <a href="https://github.com/surfly/cobro/pull/11986" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11986</a>
-                        </div>
+                <div class="item" data-type="added">
+                    <div class="item-icon"><i class="fa-solid fa-window-restore"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag added"><i class="fa-solid fa-plus"></i> added</span></div>
+                        <div class="item-text">Resizable webfuse extension sidebar with persisted width, overlay/push layout toggle via new <code>side_panel.overlay</code> manifest field, and <code>setWidth</code> / <code>setOverlay</code> JS API methods.</div>
                     </div>
-                </article>
-
-                <article class="card" data-type="added">
-                    <div class="card-tag-icon"><i class="fa-solid fa-bolt"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag added"><i class="fa-solid fa-plus"></i> added</span></div>
-                        <p class="card-text">Automation method/tool call events (e.g., <code>act:click</code>, <code>see:domSnapshot</code>, <code>wait</code>) for end-to-end visibility into automation runs.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> t-ski</span>
-                            <a href="https://github.com/surfly/cobro/pull/11978" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11978</a>
-                        </div>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> aogz</span>
+                        <a href="https://github.com/surfly/cobro/pull/11986" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11986</a>
                     </div>
-                </article>
+                </div>
 
-                <article class="card" data-type="added">
-                    <div class="card-tag-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag added"><i class="fa-solid fa-plus"></i> added</span></div>
-                        <p class="card-text">Automation event emitter API on the page state machine — clients can subscribe to <code>stable</code> / <code>transition</code> events.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> t-ski</span>
-                            <a href="https://github.com/surfly/cobro/pull/11973" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11973</a>
-                        </div>
+                <div class="item" data-type="added">
+                    <div class="item-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag added"><i class="fa-solid fa-plus"></i> added</span></div>
+                        <div class="item-text">Automation method/tool call events (e.g., <code>act:click</code>, <code>see:domSnapshot</code>, <code>wait</code>) for end-to-end visibility into automation runs.</div>
                     </div>
-                </article>
-
-                <article class="card" data-type="added">
-                    <div class="card-tag-icon"><i class="fa-solid fa-toggle-on"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag added"><i class="fa-solid fa-plus"></i> added</span></div>
-                        <p class="card-text">New <code>automation_available_tools</code> space option lets admins restrict which MCP tools are exposed in sessions, with per-tool toggles in the automation app settings.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> aogz</span>
-                            <a href="https://github.com/surfly/cobro/pull/11972" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11972</a>
-                        </div>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> t-ski</span>
+                        <a href="https://github.com/surfly/cobro/pull/11978" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11978</a>
                     </div>
-                </article>
+                </div>
 
-                <article class="card" data-type="added">
-                    <div class="card-tag-icon"><i class="fa-solid fa-plug-circle-bolt"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag added"><i class="fa-solid fa-plus"></i> added</span></div>
-                        <p class="card-text">Session MCP server now supports dynamic tool discovery via <code>?dynamic=true</code> — clients start with only <code>connectToSession</code> and unlock the full session-scoped tool set after binding.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> aogz</span>
-                            <a href="https://github.com/surfly/cobro/pull/11934" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11934</a>
-                        </div>
+                <div class="item" data-type="added">
+                    <div class="item-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag added"><i class="fa-solid fa-plus"></i> added</span></div>
+                        <div class="item-text">Automation event emitter API on the page state machine — clients can subscribe to <code>stable</code> / <code>transition</code> events.</div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> t-ski</span>
+                        <a href="https://github.com/surfly/cobro/pull/11973" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11973</a>
+                    </div>
+                </div>
 
-                <article class="card" data-type="added">
-                    <div class="card-tag-icon"><i class="fa-solid fa-terminal"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags">
+                <div class="item" data-type="added">
+                    <div class="item-icon"><i class="fa-solid fa-toggle-on"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag added"><i class="fa-solid fa-plus"></i> added</span></div>
+                        <div class="item-text">New <code>automation_available_tools</code> space option lets admins restrict which MCP tools are exposed in sessions, with per-tool toggles in the automation app settings.</div>
+                    </div>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> aogz</span>
+                        <a href="https://github.com/surfly/cobro/pull/11972" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11972</a>
+                    </div>
+                </div>
+
+                <div class="item" data-type="added">
+                    <div class="item-icon"><i class="fa-solid fa-plug-circle-bolt"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag added"><i class="fa-solid fa-plus"></i> added</span></div>
+                        <div class="item-text">Session MCP server now supports dynamic tool discovery via <code>?dynamic=true</code> — clients start with only <code>connectToSession</code> and unlock the full session-scoped tool set after binding.</div>
+                    </div>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> aogz</span>
+                        <a href="https://github.com/surfly/cobro/pull/11934" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11934</a>
+                    </div>
+                </div>
+
+                <div class="item" data-type="added">
+                    <div class="item-icon"><i class="fa-solid fa-terminal"></i></div>
+                    <div class="item-body">
+                        <div class="item-head">
                             <span class="tag added"><i class="fa-solid fa-plus"></i> added</span>
                             <span class="tag changed"><i class="fa-solid fa-pen"></i> changed</span>
                         </div>
-                        <p class="card-text">Claude CLI installation one-liners added to Session MCP Server and Docs &amp; REST API MCP Server documentation, plus refined tool descriptions for more reliable agent targeting.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> jsnjack</span>
-                            <a href="https://github.com/surfly/cobro/pull/11963" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11963</a>
-                        </div>
+                        <div class="item-text">Claude CLI installation one-liners added to Session MCP Server and Docs &amp; REST API MCP Server documentation, plus refined tool descriptions for more reliable agent targeting.</div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> jsnjack</span>
+                        <a href="https://github.com/surfly/cobro/pull/11963" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11963</a>
+                    </div>
+                </div>
 
             </div>
         </section>
 
         <!-- IMPROVEMENTS -->
-        <section class="sec-improve">
-            <div class="section-header">
+        <section class="section-card sec-improve">
+            <div class="section-head">
                 <div class="section-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
                 <h2>Improvements</h2>
                 <span class="section-count">1</span>
             </div>
-            <div class="cards">
+            <div class="items">
 
-                <article class="card" data-type="changed">
-                    <div class="card-tag-icon"><i class="fa-brands fa-vuejs"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags">
+                <div class="item" data-type="changed">
+                    <div class="item-icon"><i class="fa-brands fa-vuejs"></i></div>
+                    <div class="item-body">
+                        <div class="item-head">
                             <span class="tag changed"><i class="fa-solid fa-pen"></i> changed</span>
                             <span class="tag revert"><i class="fa-solid fa-rotate-left"></i> reverted</span>
                         </div>
-                        <p class="card-text">Session UI upgraded from Vue 2.7 to Vue 3.5.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> Vamxi</span>
-                            <a href="https://github.com/surfly/cobro/pull/11765" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11765</a>
-                        </div>
+                        <div class="item-text">Session UI upgraded from Vue 2.7 to Vue 3.5.</div>
                         <div class="revert-note">
                             <i class="fa-solid fa-triangle-exclamation"></i>
-                            Reverted by <a href="https://github.com/surfly/cobro/pull/12010" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;font-weight:600;">#12010</a> within the week — will reland after the UAT release window.
+                            Reverted by <a href="https://github.com/surfly/cobro/pull/12010" target="_blank" rel="noopener">#12010</a> — will reland after UAT release
                         </div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> Vamxi</span>
+                        <a href="https://github.com/surfly/cobro/pull/11765" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11765</a>
+                    </div>
+                </div>
 
             </div>
         </section>
 
         <!-- BUG FIXES -->
-        <section class="sec-fixes">
-            <div class="section-header">
+        <section class="section-card sec-fixes">
+            <div class="section-head">
                 <div class="section-icon"><i class="fa-solid fa-bug-slash"></i></div>
                 <h2>Bug Fixes</h2>
                 <span class="section-count">7</span>
             </div>
-            <div class="cards">
+            <div class="items">
 
-                <article class="card" data-type="fixed">
-                    <div class="card-tag-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag fixed"><i class="fa-solid fa-wrench"></i> fixed</span></div>
-                        <p class="card-text">Session creation errors (invalid options, license limits, origin checks) now propagate end-to-end instead of surfacing as opaque 500s, with consistent JSON error bodies and the widget button restored on failure.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> pmenichelli</span>
-                            <a href="https://github.com/surfly/cobro/pull/11976" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11976</a>
-                        </div>
+                <div class="item" data-type="fixed">
+                    <div class="item-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag fixed"><i class="fa-solid fa-wrench"></i> fixed</span></div>
+                        <div class="item-text">Session creation errors (invalid options, license limits, origin checks) now propagate end-to-end instead of surfacing as opaque 500s, with consistent JSON error bodies and the widget button restored on failure.</div>
                     </div>
-                </article>
-
-                <article class="card" data-type="fixed">
-                    <div class="card-tag-icon"><i class="fa-solid fa-globe"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag fixed"><i class="fa-solid fa-wrench"></i> fixed</span></div>
-                        <p class="card-text">Company subdomain is preserved in all Studio redirect URLs (SSO, login, billing, password reset), and WebSocket origin validation, docs links, and the <code>3rdpartycookietest</code> route now work correctly on company subdomains.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> KirillArefev</span>
-                            <a href="https://github.com/surfly/cobro/pull/11921" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11921</a>
-                        </div>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> pmenichelli</span>
+                        <a href="https://github.com/surfly/cobro/pull/11976" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11976</a>
                     </div>
-                </article>
+                </div>
 
-                <article class="card" data-type="fixed">
-                    <div class="card-tag-icon"><i class="fa-solid fa-link"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag fixed"><i class="fa-solid fa-wrench"></i> fixed</span></div>
-                        <p class="card-text">Proxy no longer crashes on scheme-relative <code>Location</code> redirects (e.g. <code>//cm.g.doubleclick.net/...</code>) — high-frequency Sentry issue.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> pmenichelli</span>
-                            <a href="https://github.com/surfly/cobro/pull/11982" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11982</a>
-                        </div>
+                <div class="item" data-type="fixed">
+                    <div class="item-icon"><i class="fa-solid fa-globe"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag fixed"><i class="fa-solid fa-wrench"></i> fixed</span></div>
+                        <div class="item-text">Company subdomain is preserved in all Studio redirect URLs (SSO, login, billing, password reset), and WebSocket origin validation, docs links, and the <code>3rdpartycookietest</code> route now work correctly on company subdomains.</div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> KirillArefev</span>
+                        <a href="https://github.com/surfly/cobro/pull/11921" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11921</a>
+                    </div>
+                </div>
 
-                <article class="card" data-type="fixed">
-                    <div class="card-tag-icon"><i class="fa-solid fa-server"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags">
+                <div class="item" data-type="fixed">
+                    <div class="item-icon"><i class="fa-solid fa-link"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag fixed"><i class="fa-solid fa-wrench"></i> fixed</span></div>
+                        <div class="item-text">Proxy no longer crashes on scheme-relative <code>Location</code> redirects (e.g. <code>//cm.g.doubleclick.net/...</code>) — high-frequency Sentry issue.</div>
+                    </div>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> pmenichelli</span>
+                        <a href="https://github.com/surfly/cobro/pull/11982" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11982</a>
+                    </div>
+                </div>
+
+                <div class="item" data-type="fixed">
+                    <div class="item-icon"><i class="fa-solid fa-server"></i></div>
+                    <div class="item-body">
+                        <div class="item-head">
                             <span class="tag fixed"><i class="fa-solid fa-wrench"></i> fixed</span>
-                            <span class="tag client"><i class="fa-solid fa-briefcase"></i> Client · MySupercare</span>
+                            <span class="tag client"><i class="fa-solid fa-briefcase"></i> MySupercare</span>
                         </div>
-                        <p class="card-text">Non-bytes <code>Range</code> headers (e.g. <code>items=0-999</code>) are now correctly forwarded through Varnish to the origin server.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> DimaIT</span>
-                            <a href="https://github.com/surfly/cobro/pull/11955" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11955</a>
-                        </div>
+                        <div class="item-text">Non-bytes <code>Range</code> headers (e.g. <code>items=0-999</code>) are now correctly forwarded through Varnish to the origin server.</div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> DimaIT</span>
+                        <a href="https://github.com/surfly/cobro/pull/11955" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11955</a>
+                    </div>
+                </div>
 
-                <article class="card" data-type="fixed">
-                    <div class="card-tag-icon"><i class="fa-solid fa-code"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags">
+                <div class="item" data-type="fixed">
+                    <div class="item-icon"><i class="fa-solid fa-code"></i></div>
+                    <div class="item-body">
+                        <div class="item-head">
                             <span class="tag fixed"><i class="fa-solid fa-wrench"></i> fixed</span>
-                            <span class="tag client"><i class="fa-solid fa-briefcase"></i> Client · Izi1</span>
+                            <span class="tag client"><i class="fa-solid fa-briefcase"></i> Izi1</span>
                         </div>
-                        <p class="card-text">JS destructuring with the same path used multiple times (e.g. <code>const { a: b, a: c } = obj</code>) is now handled correctly by the sandbox transform.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> ypapouski</span>
-                            <a href="https://github.com/surfly/cobro/pull/11975" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11975</a>
-                        </div>
+                        <div class="item-text">JS destructuring with the same path used multiple times (e.g. <code>const { a: b, a: c } = obj</code>) is now handled correctly by the sandbox transform.</div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> ypapouski</span>
+                        <a href="https://github.com/surfly/cobro/pull/11975" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11975</a>
+                    </div>
+                </div>
 
-                <article class="card" data-type="fixed">
-                    <div class="card-tag-icon"><i class="fa-brands fa-firefox-browser"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag fixed"><i class="fa-solid fa-wrench"></i> fixed</span></div>
-                        <p class="card-text">Detached iframe cleanup in Firefox 150+ when <code>sync_participants</code> is disabled (frames now identified via announcement token when <code>MessageEvent.source</code> is null).</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> DimaIT</span>
-                            <a href="https://github.com/surfly/cobro/pull/11988" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11988</a>
-                        </div>
+                <div class="item" data-type="fixed">
+                    <div class="item-icon"><i class="fa-brands fa-firefox-browser"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag fixed"><i class="fa-solid fa-wrench"></i> fixed</span></div>
+                        <div class="item-text">Detached iframe cleanup in Firefox 150+ when <code>sync_participants</code> is disabled — frames identified via announcement token when <code>MessageEvent.source</code> is null.</div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> DimaIT</span>
+                        <a href="https://github.com/surfly/cobro/pull/11988" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11988</a>
+                    </div>
+                </div>
 
-                <article class="card" data-type="fixed">
-                    <div class="card-tag-icon"><i class="fa-brands fa-python"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag fixed"><i class="fa-solid fa-wrench"></i> fixed</span></div>
-                        <p class="card-text">Python SDK examples in Session MCP Server documentation updated to the latest <code>streamable_http_client</code> API.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> jsnjack</span>
-                            <a href="https://github.com/surfly/cobro/pull/11981" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11981</a>
-                        </div>
+                <div class="item" data-type="fixed">
+                    <div class="item-icon"><i class="fa-brands fa-python"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag fixed"><i class="fa-solid fa-wrench"></i> fixed</span></div>
+                        <div class="item-text">Python SDK examples in Session MCP Server documentation updated to the latest <code>streamable_http_client</code> API.</div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> jsnjack</span>
+                        <a href="https://github.com/surfly/cobro/pull/11981" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11981</a>
+                    </div>
+                </div>
 
             </div>
         </section>
 
         <!-- BREAKING & REMOVALS -->
-        <section class="sec-breaking">
-            <div class="section-header">
+        <section class="section-card sec-breaking">
+            <div class="section-head">
                 <div class="section-icon"><i class="fa-solid fa-trash-can"></i></div>
                 <h2>Breaking &amp; Removals</h2>
                 <span class="section-count">2</span>
             </div>
-            <div class="cards">
+            <div class="items">
 
-                <article class="card" data-type="removed">
-                    <div class="card-tag-icon"><i class="fa-solid fa-minus"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag removed"><i class="fa-solid fa-xmark"></i> removed</span></div>
-                        <p class="card-text">Obsolete common automation actuation option <code>scrollIntoView</code>.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> t-ski</span>
-                            <a href="https://github.com/surfly/cobro/pull/11990" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11990</a>
-                        </div>
+                <div class="item" data-type="removed">
+                    <div class="item-icon"><i class="fa-solid fa-minus"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag removed"><i class="fa-solid fa-xmark"></i> removed</span></div>
+                        <div class="item-text">Obsolete common automation actuation option <code>scrollIntoView</code>.</div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> t-ski</span>
+                        <a href="https://github.com/surfly/cobro/pull/11990" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11990</a>
+                    </div>
+                </div>
 
-                <article class="card" data-type="removed">
-                    <div class="card-tag-icon"><i class="fa-solid fa-minus"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag removed"><i class="fa-solid fa-xmark"></i> removed</span></div>
-                        <p class="card-text"><code>timePerChar</code> parameter dropped from the <code>act.type</code> Session MCP Server tool.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> jsnjack</span>
-                            <a href="https://github.com/surfly/cobro/pull/11963" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11963</a>
-                        </div>
+                <div class="item" data-type="removed">
+                    <div class="item-icon"><i class="fa-solid fa-minus"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag removed"><i class="fa-solid fa-xmark"></i> removed</span></div>
+                        <div class="item-text"><code>timePerChar</code> parameter dropped from the <code>act.type</code> Session MCP Server tool.</div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> jsnjack</span>
+                        <a href="https://github.com/surfly/cobro/pull/11963" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11963</a>
+                    </div>
+                </div>
 
             </div>
         </section>
 
         <!-- INTERNAL -->
-        <section class="sec-internal">
-            <div class="section-header">
+        <section class="section-card sec-internal">
+            <div class="section-head">
                 <div class="section-icon"><i class="fa-solid fa-gears"></i></div>
                 <h2>Internal</h2>
-                <span class="section-count">12</span>
+                <span class="section-count">15</span>
             </div>
-            <div class="cards">
+            <div class="items">
 
-                <article class="card" data-type="revert">
-                    <div class="card-tag-icon"><i class="fa-solid fa-rotate-left"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags">
+                <div class="item" data-type="revert">
+                    <div class="item-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                    <div class="item-body">
+                        <div class="item-head">
                             <span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span>
                             <span class="tag revert"><i class="fa-solid fa-rotate-left"></i> revert</span>
                         </div>
-                        <p class="card-text">Vue 3.5 migration reverted to keep develop stable through the upcoming UAT release window — will reland in two weeks.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> Vamxi</span>
-                            <a href="https://github.com/surfly/cobro/pull/12010" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #12010</a>
-                        </div>
+                        <div class="item-text">Vue 3.5 migration reverted to keep develop stable through the upcoming UAT release window — will reland in two weeks.</div>
                     </div>
-                </article>
-
-                <article class="card" data-type="internal">
-                    <div class="card-tag-icon"><i class="fa-brands fa-firefox-browser"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
-                        <p class="card-text">Snapshot refresh after Firefox 150 — adds <code>CSSFontFaceDescriptors</code>, <code>RTCError</code>, <code>RTCErrorEvent</code>, <code>RTCPeerConnectionIceErrorEvent</code>; bumps <code>browserVersion</code> 149 → 150.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> DimaIT</span>
-                            <a href="https://github.com/surfly/cobro/pull/11995" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11995</a>
-                        </div>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> Vamxi</span>
+                        <a href="https://github.com/surfly/cobro/pull/12010" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #12010</a>
                     </div>
-                </article>
+                </div>
 
-                <article class="card" data-type="internal">
-                    <div class="card-tag-icon"><i class="fa-brands fa-golang"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
-                        <p class="card-text">New <code>src/shared_go/AGENTS.md</code> documenting <code>shared/logutils</code> trace-ID propagation conventions for Go services.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> aogz</span>
-                            <a href="https://github.com/surfly/cobro/pull/11996" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11996</a>
-                        </div>
+                <div class="item" data-type="internal">
+                    <div class="item-icon"><i class="fa-solid fa-server"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
+                        <div class="item-text">Upgraded all <code>cf</code> service dependencies — Python lockfiles, Node devDeps, and major TypeScript 6 bump.</div>
                     </div>
-                </article>
-
-                <article class="card" data-type="internal">
-                    <div class="card-tag-icon"><i class="fa-solid fa-fire"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
-                        <p class="card-text">New <code>/campfire-report</code> skill for generating weekly PR summaries.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> jsnjack</span>
-                            <a href="https://github.com/surfly/cobro/pull/12005" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #12005</a>
-                        </div>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> aogz</span>
+                        <a href="https://github.com/surfly/cobro/pull/12008" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #12008</a>
                     </div>
-                </article>
+                </div>
 
-                <article class="card" data-type="internal">
-                    <div class="card-tag-icon"><i class="fa-solid fa-stopwatch"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
-                        <p class="card-text">Centralized duration tracking for automation tool execution and fixed missing duration on the navigate tool.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> jsnjack</span>
-                            <a href="https://github.com/surfly/cobro/pull/12001" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #12001</a>
-                        </div>
+                <div class="item" data-type="internal">
+                    <div class="item-icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
+                        <div class="item-text">Upgraded all <code>console_ui</code> Node dependencies — safe semver bumps plus major ESLint 10, TypeScript 6, and Vite 8 (Rolldown) upgrades.</div>
                     </div>
-                </article>
-
-                <article class="card" data-type="internal">
-                    <div class="card-tag-icon"><i class="fa-solid fa-microphone-slash"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
-                        <p class="card-text">Click-target on the mic mute button stabilized so toggles don't drop when the soundwave (voice activity) icon swaps in mid-click.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> DimaIT</span>
-                            <a href="https://github.com/surfly/cobro/pull/11987" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11987</a>
-                        </div>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> aogz</span>
+                        <a href="https://github.com/surfly/cobro/pull/12007" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #12007</a>
                     </div>
-                </article>
+                </div>
 
-                <article class="card" data-type="internal">
-                    <div class="card-tag-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
-                        <p class="card-text">Pylance / <code>pyrightconfig</code> setup so VS Code resolves all per-project venvs; <code>./surfly update</code> now manages venvs via <code>invenv</code>.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> pmenichelli</span>
-                            <a href="https://github.com/surfly/cobro/pull/11942" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11942</a>
-                        </div>
+                <div class="item" data-type="internal">
+                    <div class="item-icon"><i class="fa-solid fa-folder-tree"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
+                        <div class="item-text">Reorganized <code>pytests</code> — moved daily integration tests to <code>tests/daily/</code>, relocated <code>shared_python</code> unit tests under <code>shared/tests/</code>, and removed the obsolete pytests container mount.</div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> pmenichelli</span>
+                        <a href="https://github.com/surfly/cobro/pull/11999" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11999</a>
+                    </div>
+                </div>
 
-                <article class="card" data-type="internal">
-                    <div class="card-tag-icon"><i class="fa-solid fa-cube"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags">
+                <div class="item" data-type="internal">
+                    <div class="item-icon"><i class="fa-brands fa-firefox-browser"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
+                        <div class="item-text">Snapshot refresh after Firefox 150 — adds <code>CSSFontFaceDescriptors</code>, <code>RTCError</code>, <code>RTCErrorEvent</code>, <code>RTCPeerConnectionIceErrorEvent</code>; bumps <code>browserVersion</code> 149 → 150.</div>
+                    </div>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> DimaIT</span>
+                        <a href="https://github.com/surfly/cobro/pull/11995" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11995</a>
+                    </div>
+                </div>
+
+                <div class="item" data-type="internal">
+                    <div class="item-icon"><i class="fa-brands fa-golang"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
+                        <div class="item-text">New <code>src/shared_go/AGENTS.md</code> documenting <code>shared/logutils</code> trace-ID propagation conventions for Go services.</div>
+                    </div>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> aogz</span>
+                        <a href="https://github.com/surfly/cobro/pull/11996" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11996</a>
+                    </div>
+                </div>
+
+                <div class="item" data-type="internal">
+                    <div class="item-icon"><i class="fa-solid fa-fire"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
+                        <div class="item-text">New <code>/campfire-report</code> skill for generating weekly PR summaries.</div>
+                    </div>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> jsnjack</span>
+                        <a href="https://github.com/surfly/cobro/pull/12005" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #12005</a>
+                    </div>
+                </div>
+
+                <div class="item" data-type="internal">
+                    <div class="item-icon"><i class="fa-solid fa-stopwatch"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
+                        <div class="item-text">Centralized duration tracking for automation tool execution and fixed missing duration on the navigate tool.</div>
+                    </div>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> jsnjack</span>
+                        <a href="https://github.com/surfly/cobro/pull/12001" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #12001</a>
+                    </div>
+                </div>
+
+                <div class="item" data-type="internal">
+                    <div class="item-icon"><i class="fa-solid fa-microphone-slash"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
+                        <div class="item-text">Click-target on the mic mute button stabilized so toggles don't drop when the soundwave (voice activity) icon swaps in mid-click.</div>
+                    </div>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> DimaIT</span>
+                        <a href="https://github.com/surfly/cobro/pull/11987" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11987</a>
+                    </div>
+                </div>
+
+                <div class="item" data-type="internal">
+                    <div class="item-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
+                        <div class="item-text">Pylance / <code>pyrightconfig</code> setup so VS Code resolves all per-project venvs; <code>./surfly update</code> now manages venvs via <code>invenv</code>.</div>
+                    </div>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> pmenichelli</span>
+                        <a href="https://github.com/surfly/cobro/pull/11942" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11942</a>
+                    </div>
+                </div>
+
+                <div class="item" data-type="internal">
+                    <div class="item-icon"><i class="fa-solid fa-cube"></i></div>
+                    <div class="item-body">
+                        <div class="item-head">
                             <span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span>
                             <span class="tag performance"><i class="fa-solid fa-gauge-high"></i> performance</span>
                         </div>
-                        <p class="card-text">DOMQuake page-state observer dependency added; throttled automation feedback bounding-box updates on scroll/resize.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> t-ski</span>
-                            <a href="https://github.com/surfly/cobro/pull/11973" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11973</a>
-                        </div>
+                        <div class="item-text">DOMQuake page-state observer dependency added; throttled automation feedback bounding-box updates on scroll/resize.</div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> t-ski</span>
+                        <a href="https://github.com/surfly/cobro/pull/11973" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11973</a>
+                    </div>
+                </div>
 
-                <article class="card" data-type="internal">
-                    <div class="card-tag-icon"><i class="fa-solid fa-user-secret"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags">
+                <div class="item" data-type="internal">
+                    <div class="item-icon"><i class="fa-solid fa-user-secret"></i></div>
+                    <div class="item-body">
+                        <div class="item-head">
                             <span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span>
                             <span class="tag security"><i class="fa-solid fa-shield-halved"></i> security</span>
                         </div>
-                        <p class="card-text">Upgraded <code>User-Agent</code> for privacy features.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> pmenichelli</span>
-                            <a href="https://github.com/surfly/cobro/pull/11989" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11989</a>
-                        </div>
+                        <div class="item-text">Upgraded <code>User-Agent</code> for privacy features.</div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> pmenichelli</span>
+                        <a href="https://github.com/surfly/cobro/pull/11989" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11989</a>
+                    </div>
+                </div>
 
-                <article class="card" data-type="internal">
-                    <div class="card-tag-icon"><i class="fa-solid fa-box-open"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags">
+                <div class="item" data-type="internal">
+                    <div class="item-icon"><i class="fa-solid fa-box-open"></i></div>
+                    <div class="item-body">
+                        <div class="item-head">
                             <span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span>
                             <span class="tag security"><i class="fa-solid fa-shield-halved"></i> security</span>
                         </div>
-                        <p class="card-text">Upgraded <code>haproxy_echo</code> service dependencies (Q2 2026 refresh).</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> pmenichelli</span>
-                            <a href="https://github.com/surfly/cobro/pull/11979" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11979</a>
-                        </div>
+                        <div class="item-text">Upgraded <code>haproxy_echo</code> service dependencies (Q2 2026 refresh).</div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> pmenichelli</span>
+                        <a href="https://github.com/surfly/cobro/pull/11979" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11979</a>
+                    </div>
+                </div>
 
-                <article class="card" data-type="internal">
-                    <div class="card-tag-icon"><i class="fa-solid fa-box-open"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
-                        <p class="card-text">Upgraded <code>console_api</code> and <code>console_api_tasks</code> service dependencies.</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> Vamxi</span>
-                            <a href="https://github.com/surfly/cobro/pull/11983" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11983</a>
-                        </div>
+                <div class="item" data-type="internal">
+                    <div class="item-icon"><i class="fa-solid fa-box-open"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
+                        <div class="item-text">Upgraded <code>console_api</code> and <code>console_api_tasks</code> service dependencies.</div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> Vamxi</span>
+                        <a href="https://github.com/surfly/cobro/pull/11983" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11983</a>
+                    </div>
+                </div>
 
-                <article class="card" data-type="internal">
-                    <div class="card-tag-icon"><i class="fa-brands fa-js"></i></div>
-                    <div class="card-body">
-                        <div class="card-tags"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
-                        <p class="card-text">Upgraded JS asset dependencies (TypeScript 6.0 deprecation cleanup).</p>
-                        <div class="card-meta">
-                            <span class="author"><i class="fa-regular fa-user"></i> Vamxi</span>
-                            <a href="https://github.com/surfly/cobro/pull/11908" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> PR #11908</a>
-                        </div>
+                <div class="item" data-type="internal">
+                    <div class="item-icon"><i class="fa-brands fa-js"></i></div>
+                    <div class="item-body">
+                        <div class="item-head"><span class="tag internal"><i class="fa-solid fa-gear"></i> internal</span></div>
+                        <div class="item-text">Upgraded JS asset dependencies (TypeScript 6.0 deprecation cleanup).</div>
                     </div>
-                </article>
+                    <div class="item-meta">
+                        <span class="author"><i class="fa-regular fa-user"></i> Vamxi</span>
+                        <a href="https://github.com/surfly/cobro/pull/11908" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> #11908</a>
+                    </div>
+                </div>
 
             </div>
         </section>
